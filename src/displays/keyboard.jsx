@@ -1,0 +1,19 @@
+// add buttons
+    // - fn: vFiveAdd
+    // - fn: vTenAdd
+    // - fn: vTwnAdd
+    // - fn: vTwnfiveAdd
+    // - fn: kOneAdd
+    // - fn: kTwoAdd
+    // - fn: kThrAdd
+    // - fn: vClear
+    // - fn: kFouAdd
+    // - fn: kFveAdd
+    // - fn: kSixAdd
+    // - fn: kSevAdd
+    // - fn: kEigAdd
+    // - fn: kNneAdd
+    // - fn: vUndo
+    // - fn: kZroAdd
+    // - fn: kZerAdd
+    // - fn: kDotAdd
