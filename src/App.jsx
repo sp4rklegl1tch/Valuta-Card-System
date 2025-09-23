@@ -1,51 +1,63 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import { invoke } from "@tauri-apps/api/core";
+import React from "react";
 import "./App.css";
 
-function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
+export default function App() {
+  const menuItems = [
+  { id: "new", label: "Nieuwe Cadeaubon", icon: <img src="/creditcard-plus.svg" alt="Nieuwe" />, className: "card-yellow", cmd: "open_new_voucher" },
+    { id: "pay", label: "Betaal met bon", icon: <img src="/creditcard-hand.svg" alt="Betaal" />, className: "card-green", cmd: "pay_with_voucher" },
+    { id: "off", label: "Kassa Uitzetten", icon: <img src="/off-button.svg" alt="Uit" />, className: "card-gray", cmd: "shutdown_kassa" }, 
+    { id: "check", label: "Controleer Cadeaubon", icon: <img src="/creditcard-vinkje.svg" alt="check" />, className: "card-orange", cmd: "check_voucher" },
+    { id: "deact", label: "Cadeaubon Deactiveren", icon: <img src="/creditcard-min.svg" alt="Deactiveren" />, className: "card-red", cmd: "deactivate_voucher" },
+    { id: "logout", label: "Uitloggen", icon: <img src="/logout.svg" alt="Uitloggen" />, className: "card-gray2", cmd: "logout" },
+  ];
 
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    setGreetMsg(await invoke("greet", { name }));
+  async function handleClick(item) {
+    // voorbeeld: probeer een Tauri-invoke aan te roepen; als het niet bestaat, toon een alert
+    try {
+      if (invoke) {
+        // Let op: dit roept commando's aan die je in Rust/Tauri moet implementeren.
+        const res = await invoke(item.cmd);
+        // teruggegeven waarde laten zien (optioneel)
+        if (res) {
+          alert(String(res));
+        }
+      } else {
+        alert(item.label);
+      }
+    } catch (err) {
+      console.error("invoke error:", err);
+      // fallback: laat de actie zien
+      alert(`${item.label} (invoke faalde of is niet geïmplementeerd)\n${err?.toString?.() || ""}`);
+    }
   }
-
   return (
-    <main className="container">
-      <h1>Welcome to Tauri + React</h1>
+    <main className="app-container kiosk">
+      <header className="kiosk-header">
+        <div className="brand-left">
+          <img src="/Assen.webp" alt="Assen logo" className="brand-logo no-box" onError={(e)=>{e.currentTarget.style.display='none'}} />
+        </div>
+        <div className="header-center">
+          <div className="main-title"><img src="/dashboard.svg" alt="Dashboard" className="header-icon"/>Hoofdmenu</div>
+        </div>
+        <div className="brand-right">
+          <div className="sub-title luna">Cadeaubonnen Kassasysteem</div>
+        </div>
+      </header>
 
-      <div className="row">
-        <a href="https://vite.dev" target="_blank">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
+      <section className="menu-grid kiosk-grid" role="navigation" aria-label="Hoofdmenu">
+          {menuItems.map((it) => (
+            <button
+              key={it.id}
+              className={`card ${it.className}`}
+              onClick={() => handleClick(it)}
+              aria-label={it.label}
+            >
+              <div className="card-icon" aria-hidden>{it.icon}</div>
+              <div className="card-label">{it.label}</div>
+            </button>
+          ))}
+      </section>
 
-      <form
-        className="row"
-        onSubmit={(e) => {
-          e.preventDefault();
-          greet();
-        }}
-      >
-        <input
-          id="greet-input"
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
-        />
-        <button type="submit">Greet</button>
-      </form>
-      <p>{greetMsg}</p>
     </main>
   );
 }
-
-export default App;
