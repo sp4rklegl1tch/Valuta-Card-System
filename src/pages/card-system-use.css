@@ -1,0 +1,194 @@
+/* Card System Page Layout - improved to match screenshot */
+
+.card-system-grid {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 40px;
+  align-items: start;
+  margin-top: 36px;
+}
+
+/* subtle vertical divider between left and right panels (drawn from the left-panel edge) */
+.left-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-right: 24px;
+}
+.left-panel::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: -20px;
+  width: 2px;
+  height: calc(100% - 24px);
+  background: #dcdcdc;
+}
+
+/* Amount buttons: four square gray tiles */
+.amount-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.amount-buttons button {
+  background: #707070; /* gray */
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 18px 0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+}
+.amount-buttons button:hover { transform: translateY(-3px); }
+
+/* Keypad - large orange squares */
+.keypad-area {
+  display: flex;
+  gap: 12px;
+  align-items: start;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 88px);
+  grid-auto-rows: 88px;
+  gap: 12px;
+}
+.keypad button {
+  background: #f07f3e; /* orange */
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+}
+.keypad button:hover { transform: translateY(-3px); }
+.keypad .btn-enter {
+  background: #9c9c9c;
+  grid-column: 1 / span 3;
+}
+
+.keypad-side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.keypad-side .btn-clear,
+.keypad-side .btn-delete {
+  width: 88px;
+  /* occupy exactly two keypad blocks vertically (2 * 88px + gap(12px)) */
+  height: calc(2 * 88px + 12px);
+  border-radius: 6px;
+  border: none;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.keypad-side .btn-clear { background: #707070; color: #fff; }
+.keypad-side .btn-delete { background: #9c9c9c; color: #fff; }
+
+/* make the enter button sit beneath the other two and slightly taller */
+.keypad-side .btn-enter {
+  width: 88px;
+  height: 104px;
+  background: #9c9c9c;
+  color: #fff;
+  border-radius: 6px;
+  border: none;
+  font-size: 22px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* RIGHT SIDE */
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.right-panel .panel-heading {
+  color: #8FA638;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+/* make scan area occupy half the visible page height so it's visually half */
+.scan-row {
+  display: flex;
+  gap: 18px;
+}
+
+.scan-box {
+  width: 60%;
+  height: calc(50vh - 120px); /* approx half of page minus header/padding */
+  min-height: 240px;
+  border: 2px solid #8FA638; /* green border */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fafafa;
+  color: #8b8b8b;
+  font-size: 28px;
+  font-weight: 600;
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.02);
+  text-align: center;
+  padding: 20px;
+}
+
+.scan-box p { margin: 0; letter-spacing: 1px; }
+
+.value-box {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-left: 2px solid #e6e6e6;
+  padding-left: 24px;
+}
+
+.value-label { color: #8FA638; font-weight:700; margin-bottom: 8px; }
+.value-display { font-size: 28px; color: #444; font-weight: 700; }
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 18px;
+  align-items: center;
+}
+
+.actions .btn-dashboard {
+  background: #fff;
+  border: 2px solid #e0e0e0;
+  padding: 14px 28px;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.actions .btn-confirm {
+  background: #707070;
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+/* Small screens: stack columns */
+@media (max-width: 980px) {
+  .card-system-grid { grid-template-columns: 1fr; }
+  .left-panel::after { display: none; }
+  .keypad { justify-content: center; }
+  .scan-box { min-height: 240px; font-size: 20px; }
+}

@@ -3,6 +3,8 @@ import "./App.css";
 import Header from './components/Header';
 import MenuGrid from './components/MenuGrid';
 import CardSystem from './pages/card-system';
+import CardSystemUse from './pages/card-system-use';
+import Login from './pages/login';
 
 export default function App() {
   const [route, setRoute] = useState('home');
@@ -18,9 +20,17 @@ export default function App() {
   async function handleClick(item) {
     // voorbeeld: probeer een Tauri-invoke aan te roepen; als het niet bestaat, toon een alert
     try {
-      // simple client-side navigation for 'new' route
+      // simple client-side navigation for 'new' and 'pay' routes
       if (item.id === 'new') {
         setRoute('card-system');
+        return;
+      }
+      if (item.id === 'pay') {
+        setRoute('card-system-use');
+        return;
+      }
+      if (item.id === 'logout') {
+        setRoute('login');
         return;
       }
       if (invoke) {
@@ -49,6 +59,12 @@ export default function App() {
       )}
       {route === 'card-system' && (
         <CardSystem setRoute={setRoute} />
+      )}
+      {route === 'card-system-use' && (
+        <CardSystemUse setRoute={setRoute} />
+      )}
+      {route === 'login' && (
+        <Login setRoute={setRoute} />
       )}
     </main>
   );

@@ -1,0 +1,64 @@
+/* Simple login page styles */
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #ffffff;
+  padding: 24px 40px;
+}
+
+.login-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.login-logo {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.login-title {
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.login-sub {
+  color: #8FA638;
+  margin-left: auto;
+  font-weight: 700;
+}
+
+.login-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.login-box {
+  border: 2px solid #e6e6e6;
+  padding: 36px;
+  border-radius: 8px;
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+  background: #fafafa;
+}
+
+.login-instruction {
+  font-size: 18px;
+  color: #666;
+  margin: 12px 0 24px;
+}
+
+.login-actions .btn-back {
+  background: #fff;
+  border: 2px solid #d0d0d0;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
