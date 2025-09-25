@@ -1,0 +1,6 @@
+/* Reuse global classes from App.css; this file kept small to allow component-level overrides */
+.card{ border:none; cursor:pointer; padding:34px; border-radius:12px; min-height:170px; display:flex; flex-direction:column; align-items:center; justify-content:center; box-shadow:0 12px 26px rgba(0,0,0,0.08); color:#fff; transition: transform .12s ease, box-shadow .12s ease; text-align:center; font-size:20px; }
+.card:active{ transform: translateY(1px); }
+.card:focus{ box-shadow:0 16px 36px rgba(0,0,0,0.14); outline:none; }
+.card-icon img, .card-icon svg{ width:72px; height:72px; }
+.card-label{ margin-top:18px; font-size:20px; font-weight:700; }

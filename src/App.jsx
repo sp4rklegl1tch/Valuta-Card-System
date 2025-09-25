@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
+import Header from './components/Header';
+import MenuGrid from './components/MenuGrid';
+import CardSystem from './pages/card-system';
 
 export default function App() {
+  const [route, setRoute] = useState('home');
   const menuItems = [
   { id: "new", label: "Nieuwe Cadeaubon", icon: <img src="/creditcard-plus.svg" alt="Nieuwe" />, className: "card-yellow", cmd: "open_new_voucher" },
     { id: "pay", label: "Betaal met bon", icon: <img src="/creditcard-hand.svg" alt="Betaal" />, className: "card-green", cmd: "pay_with_voucher" },
@@ -14,6 +18,11 @@ export default function App() {
   async function handleClick(item) {
     // voorbeeld: probeer een Tauri-invoke aan te roepen; als het niet bestaat, toon een alert
     try {
+      // simple client-side navigation for 'new' route
+      if (item.id === 'new') {
+        setRoute('card-system');
+        return;
+      }
       if (invoke) {
         // Let op: dit roept commando's aan die je in Rust/Tauri moet implementeren.
         const res = await invoke(item.cmd);
@@ -32,32 +41,15 @@ export default function App() {
   }
   return (
     <main className="app-container kiosk">
-      <header className="kiosk-header">
-        <div className="brand-left">
-          <img src="/Assen.webp" alt="Assen logo" className="brand-logo no-box" onError={(e)=>{e.currentTarget.style.display='none'}} />
-        </div>
-        <div className="header-center">
-          <div className="main-title"><img src="/dashboard.svg" alt="Dashboard" className="header-icon"/>Hoofdmenu</div>
-        </div>
-        <div className="brand-right">
-          <div className="sub-title luna">Cadeaubonnen Kassasysteem</div>
-        </div>
-      </header>
-
-      <section className="menu-grid kiosk-grid" role="navigation" aria-label="Hoofdmenu">
-          {menuItems.map((it) => (
-            <button
-              key={it.id}
-              className={`card ${it.className}`}
-              onClick={() => handleClick(it)}
-              aria-label={it.label}
-            >
-              <div className="card-icon" aria-hidden>{it.icon}</div>
-              <div className="card-label">{it.label}</div>
-            </button>
-          ))}
-      </section>
-
+      {route === 'home' && (
+        <>
+          <Header icon={<img src="/dashboard.svg" alt="Dashboard" className="header-icon"/>} />
+          <MenuGrid items={menuItems} onItemClick={handleClick} />
+        </>
+      )}
+      {route === 'card-system' && (
+        <CardSystem setRoute={setRoute} />
+      )}
     </main>
   );
 }

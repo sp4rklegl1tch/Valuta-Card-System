@@ -1,0 +1,8 @@
+.kiosk-header{ width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.brand-left{ display:flex; align-items:center; }
+.brand-right{ display:flex; align-items:center; }
+.header-center{ flex:1; display:flex; align-items:center; justify-content:center; }
+.main-title{ font-size:28px; font-weight:800; color:#8FA638; display:flex; align-items:center; gap:12px; }
+.header-icon{ width:28px; height:28px; display:block; }
+.brand-logo.no-box{ background: transparent; box-shadow: none; }
+.sub-title{ font-size:20px; color:var(--accent); font-weight:700; }
