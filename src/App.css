@@ -1,189 +1,65 @@
-/* ==========================================================
-   CARD DEACTIVATION SCREEN STYLES
-   ========================================================== */
-
-/* === GRID LAYOUT === */
-/* Creates the two-column layout: left = 420px, right = flexible */
-.card-system-grid {
-  display: grid;
-  grid-template-columns: 420px 1fr;
-  gap: 40px;
-  align-items: start;
-  margin-top: 36px;
-  padding: 0 40px;
+/* Kiosk / fullscreen layout */
+:root{
+  --bg: #fafafa;
+  --panel-bg: #ffffff;
+  --accent: #b8472f;
 }
 
-/* === HEADER === */
-/* Top bar with logo (left) and red system name (right) */
-.kiosk-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 40px;
-  border-bottom: 1px solid #ddd;
-}
-
-.brand-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #666;
-  font-weight: 600;
-  font-size: 18px;
-}
-
-.brand-left img {
-  width: 42px;
-  height: 42px;
-}
-
-.system-title {
-  color: #b83a1c;
-  font-family: "Courier New", monospace;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
-/* === LEFT PANEL === */
-/* Contains title, scan area, and buttons */
-.left-panel {
-  position: relative;
+.app-container.kiosk{
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  padding-right: 24px;
-}
-
-/* Adds a vertical gray line between left and right panels */
-.left-panel::after {
-  content: "";
-  position: absolute;
-  top: 12px;
-  right: -20px;
-  width: 2px;
-  height: calc(100% - 24px);
-  background: #dcdcdc;
-}
-
-/* Green section title text */
-.left-title {
-  color: #8FA638;
-  font-size: 20px;
-  font-weight: 600;
-}
-
-/* === SCAN BOX === */
-/* The main scan area (gray background with text) */
-.scan-row {
-  display: flex;
-  gap: 18px;
-}
-
-.scan-box {
-  width: 100%;
-  height: 240px;
-  border: 2px solid #8FA638;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #fafafa;
-  color: #8b8b8b;
-  font-size: 26px;
-  font-weight: 600;
-  border-radius: 6px;
-  text-align: center;
-  padding: 20px;
-}
-
-.scan-box p {
-  margin: 0;
-  letter-spacing: 1px;
-}
-
-/* === ACTION BUTTONS === */
-/* Bottom row: dashboard + confirm buttons */
-.actions {
-  display: flex;
+  align-items: stretch;
   justify-content: flex-start;
-  gap: 18px;
-  align-items: center;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  padding: 28px;
+  box-sizing: border-box;
 }
 
-/* "Naar Dashboard" button: white with gray border */
-.btn-dashboard {
-  background: #fff;
-  border: 2px solid #e0e0e0;
-  padding: 14px 28px;
-  font-size: 15px;
-  cursor: pointer;
-  border-radius: 6px;
-}
+.kiosk-header{ width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.brand-left{ display:flex; align-items:center; }
+.brand-right{ display:flex; align-items:center; }
+.header-center{ flex:1; display:flex; align-items:center; justify-content:center; }
+.main-title{ font-size:28px; font-weight:800; color:#8FA638; display:flex; align-items:center; gap:12px; }
+.brand-logo{ width:360px; height:140px; object-fit:contain; border-radius:6px; }
+.sub-title{ font-size:20px; color:var(--accent); font-weight:700; }
+.header-icon{ width:28px; height:28px; display:block; }
 
-/* "Bevestigen" button: solid dark gray */
-.btn-confirm {
-  background: #707070;
-  color: #fff;
-  border: none;
-  padding: 14px 28px;
-  font-size: 15px;
-  cursor: pointer;
-  border-radius: 6px;
-}
-
-/* === RIGHT PANEL === */
-/* Contains warning and procedure text */
-.right-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding-top: 8px;
-  color: #444;
-  line-height: 1.5;
-  font-size: 16px;
-}
-
-/* Red heading "LET OP!!!" */
-.title-red {
-  color: #b83a1c;
-  font-weight: 800;
-  font-size: 20px;
-  margin-bottom: 4px;
-}
-
-/* Red heading "PROCEDURE" */
-.title-procedure {
-  color: #b83a1c;
+/* Luna font: if you have the Luna font file, put it in public/fonts/Luna.woff2 */
+@font-face{
+  font-family: 'Luna';
+  src: url('/fonts/Luna.ttf') format('truetype');
   font-weight: 700;
-  margin-top: 12px;
-  font-size: 18px;
+  font-style: normal;
+  font-display: swap;
 }
+.luna{ font-family: 'Luna', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; }
 
-/* Inline highlight colors for words inside paragraphs */
-.highlight-red {
-  color: #b83a1c;
-  font-weight: 700;
-}
+/* grid with big buttons */
+.kiosk-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap:24px; width:100%; margin-top:150px; }
+.card{ border:none; cursor:pointer; padding:34px; border-radius:12px; min-height:170px; display:flex; flex-direction:column; align-items:center; justify-content:center; box-shadow:0 12px 26px rgba(0,0,0,0.08); color:#fff; transition: transform .12s ease, box-shadow .12s ease; text-align:center; font-size:20px; }
+.card:active{ transform: translateY(1px); }
+.card:focus{ box-shadow:0 16px 36px rgba(0,0,0,0.14); outline:none; }
+.card-icon svg{ width:72px; height:72px; }
+.card-label{ margin-top:18px; font-size:20px; font-weight:700; }
 
-.highlight-green {
-  color: #8FA638;
-  font-weight: 700;
-}
+/* ensure inline svg img assets scale nicely inside .card-icon */
+.card-icon img{ width:72px; height:72px; object-fit:contain; display:block; }
 
-/* === MOBILE RESPONSIVENESS === */
-/* Switch to one-column layout when the screen is small */
-@media (max-width: 980px) {
-  .card-system-grid {
-    grid-template-columns: 1fr;
-  }
+/* color variations */
+.card-yellow{ background: #f0bd17; }
+.card-green{ background:#6fa22b; }
+.card-gray{ background:#707070; }
+.card-orange{ background:#f07f3e; }
+.card-red{ background:#b63322; }
+.card-gray2{ background:#9c9c9c; }
 
-  /* Remove divider line on mobile */
-  .left-panel::after {
-    display: none;
-  }
+.card:hover{ transform: translateY(-8px); box-shadow:0 26px 48px rgba(0,0,0,0.14); }
 
-  /* Adjust scan box size and font for smaller screens */
-  .scan-box {
-    min-height: 240px;
-    font-size: 20px;
-  }
-}
+.footer-note{ font-size:12px; color:#888; margin-top:22px; text-align:center; }
+
+.brand-logo.no-box{ background: transparent; box-shadow: none; }
+
+/* responsive */
+@media (max-width: 1100px){ .kiosk-grid{ grid-template-columns: repeat(2,1fr); } .kiosk-panel{ padding:28px; } }
+@media (max-width: 620px){ .kiosk-grid{ grid-template-columns: 1fr; } .brand-logo{ width:120px; height:120px; } .card{ min-height:140px; padding:22px; } .card-icon svg{ width:56px; height:56px; } .card-label{ font-size:18px; } }
