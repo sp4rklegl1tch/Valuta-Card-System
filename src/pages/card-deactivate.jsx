@@ -3,7 +3,7 @@
 // It has two panels: left (scan + buttons) and right (warning text).
 
 import React from "react";
-import "./App.css"; // Import the style sheet
+import "./card-deactivate.css"; // Import the style sheet
 
 export default function CardDeactivate({ setRoute }) {
   return (
