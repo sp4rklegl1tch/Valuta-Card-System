@@ -1,5 +1,3 @@
-/* Centered fullscreen login layout - perfectly centered content */
-
 @font-face {
   font-family: 'LunaCustom';
   src: url('/fonts/Luna.ttf') format('truetype');
@@ -29,7 +27,7 @@
 }
 
 .login-logo {
-  width: 420px; /* slightly larger */
+  width: 420px;
   max-width: 80vw;
   height: auto;
   object-fit: contain;
@@ -47,10 +45,9 @@
   font-size: 40px;
   font-weight: 700;
   color: #c94b2c;
-  white-space: nowrap; /* keep title on a single line */
+  white-space: nowrap;
 }
 
-/* apply Luna font to elements that need it */
 .luna {
   font-family: 'LunaCustom', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }

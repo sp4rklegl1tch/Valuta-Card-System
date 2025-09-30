@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./card-system-use.css"; // or make a new CSS file for this page
+import "./card-system-use.css";
 
 export default function CardSystem({ setRoute }) {
   const [value, setValue] = useState("");
@@ -31,7 +31,6 @@ export default function CardSystem({ setRoute }) {
 
       {/* MAIN FLEX GRID */}
       <section className="card-system-grid">
-        {/* LEFT SIDE: keypad + amounts */}
         <div className="left-panel">
           <div className="amount-buttons">
             <button onClick={() => pressAmount(5)}>€ 5.00</button>

@@ -25,7 +25,6 @@
 .sub-title{ font-size:20px; color:var(--accent); font-weight:700; }
 .header-icon{ width:28px; height:28px; display:block; }
 
-/* Luna font: if you have the Luna font file, put it in public/fonts/Luna.woff2 */
 @font-face{
   font-family: 'Luna';
   src: url('/fonts/Luna.ttf') format('truetype');

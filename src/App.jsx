@@ -5,6 +5,7 @@ import MenuGrid from './components/MenuGrid';
 import CardSystem from './pages/card-system';
 import CardSystemUse from './pages/card-system-use';
 import Login from './pages/login';
+import CardDeactivate from './pages/card-deactivate';
 
 export default function App() {
   const [route, setRoute] = useState('home');
@@ -27,6 +28,10 @@ export default function App() {
       }
       if (item.id === 'pay') {
         setRoute('card-system-use');
+        return;
+      }
+      if (item.id === 'deact') {
+        setRoute('card-deactivate');
         return;
       }
       if (item.id === 'logout') {
@@ -62,6 +67,9 @@ export default function App() {
       )}
       {route === 'card-system-use' && (
         <CardSystemUse setRoute={setRoute} />
+      )}
+      {route === 'card-deactivate' && (
+        <CardDeactivate setRoute={setRoute} />
       )}
       {route === 'login' && (
         <Login setRoute={setRoute} />

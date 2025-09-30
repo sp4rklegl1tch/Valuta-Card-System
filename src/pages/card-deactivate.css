@@ -1,0 +1,294 @@
+.deact-app.deact-kiosk{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  padding: 28px;
+  box-sizing: border-box;
+}
+
+.deact-kiosk-header{ width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.deact-brand-left{ display:flex; align-items:center; }
+.deact-brand-right{ display:flex; align-items:center; }
+.deact-header-center{ flex:1; display:flex; align-items:center; justify-content:center; }
+.deact-main-title{ font-size:28px; font-weight:800; color:#8FA638; display:flex; align-items:center; gap:12px; }
+.deact-brand-logo{ width:360px; height:140px; object-fit:contain; border-radius:6px; }
+.deact-sub-title{ font-size:20px; color:var(--accent); font-weight:700; }
+
+.deact-main-title .deact-header-icon{ width:28px; height:28px; display:block; }
+
+.deact-brand-logo.no-box{ background: transparent; box-shadow: none; }
+
+.deact-card-system-grid {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 40px;
+  align-items: start;
+  margin-top: 36px;
+  padding: 0 40px;
+}
+
+.deact-left-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-right: 24px;
+}
+
+.deact-left-panel::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: -20px;
+  width: 2px;
+  height: calc(100% - 24px);
+  background: #dcdcdc;
+}
+
+.deact-left-title {
+  color: #8FA638;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.deact-scan-row {
+  display: flex;
+  gap: 18px;
+}
+
+.deact-scan-box {
+  width: 100%;
+  height: 240px;
+  border: 2px solid #8FA638;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fafafa;
+  color: #8b8b8b;
+  font-size: 26px;
+  font-weight: 600;
+  border-radius: 6px;
+  text-align: center;
+  padding: 20px;
+}
+
+.deact-scan-box p {
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.deact-actions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 18px;
+  align-items: center;
+}
+
+.deact-btn-dashboard {
+  background: #fff;
+  border: 2px solid #e0e0e0;
+  padding: 14px 28px;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.deact-btn-confirm {
+  background: #707070;
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.deact-right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 8px;
+  color: #444;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+.deact-title-red {
+  color: #b83a1c;
+  font-weight: 800;
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.deact-title-procedure {
+  color: #b83a1c;
+  font-weight: 700;
+  margin-top: 12px;
+  font-size: 18px;
+}
+
+.deact-highlight-red {
+  color: #b83a1c;
+  font-weight: 700;
+}
+
+.deact-highlight-green {
+  color: #8FA638;
+  font-weight: 700;
+}
+
+@media (max-width: 980px) {
+  .deact-card-system-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .deact-left-panel::after {
+    display: none;
+  }
+
+  .deact-scan-box {
+    min-height: 240px;
+    font-size: 20px;
+  }
+}
+
+.card-system-grid {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 40px;
+  align-items: start;
+  margin-top: 36px;
+  padding: 0 40px;
+}
+
+.left-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-right: 24px;
+}
+
+.left-panel::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: -20px;
+  width: 2px;
+  height: calc(100% - 24px);
+  background: #dcdcdc;
+}
+
+.left-title {
+  color: #8FA638;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* === SCAN BOX === */
+.scan-row {
+  display: flex;
+  gap: 18px;
+}
+
+.scan-box {
+  width: 100%;
+  height: 240px;
+  border: 2px solid #8FA638;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fafafa;
+  color: #8b8b8b;
+  font-size: 26px;
+  font-weight: 600;
+  border-radius: 6px;
+  text-align: center;
+  padding: 20px;
+}
+
+.scan-box p {
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+/* === ACTION BUTTONS === */
+.actions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 18px;
+  align-items: center;
+}
+
+.btn-dashboard {
+  background: #fff;
+  border: 2px solid #e0e0e0;
+  padding: 14px 28px;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.btn-confirm {
+  background: #707070;
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+/* === RIGHT PANEL === */
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 8px;
+  color: #444;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+.title-red {
+  color: #b83a1c;
+  font-weight: 800;
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.title-procedure {
+  color: #b83a1c;
+  font-weight: 700;
+  margin-top: 12px;
+  font-size: 18px;
+}
+
+.highlight-red {
+  color: #b83a1c;
+  font-weight: 700;
+}
+
+.highlight-green {
+  color: #8FA638;
+  font-weight: 700;
+}
+
+/* === MOBILE RESPONSIVENESS === */
+@media (max-width: 980px) {
+  .card-system-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .left-panel::after {
+    display: none;
+  }
+
+  .scan-box {
+    min-height: 240px;
+    font-size: 20px;
+  }
+}
