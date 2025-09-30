@@ -1,64 +1,85 @@
-/* Simple login page styles */
+/* Centered fullscreen login layout - perfectly centered content */
 
-.login-page {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background: #ffffff;
-  padding: 24px 40px;
+@font-face {
+  font-family: 'LunaCustom';
+  src: url('/fonts/Luna.ttf') format('truetype');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
 }
 
-.login-header {
+.login-page {
+  min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 18px;
+  text-align: center;
+  max-width: 900px;
+  width: 100%;
 }
 
 .login-logo {
-  width: 64px;
-  height: 64px;
+  width: 420px; /* slightly larger */
+  max-width: 80vw;
+  height: auto;
   object-fit: contain;
 }
 
+.title-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
 .login-title {
-  font-size: 20px;
-  letter-spacing: 1px;
   margin: 0;
+  font-size: 40px;
+  font-weight: 700;
+  color: #c94b2c;
+  white-space: nowrap; /* keep title on a single line */
+}
+
+/* apply Luna font to elements that need it */
+.luna {
+  font-family: 'LunaCustom', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
 .login-sub {
-  color: #8FA638;
-  margin-left: auto;
-  font-weight: 700;
-}
-
-.login-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-}
-
-.login-box {
-  border: 2px solid #e6e6e6;
-  padding: 36px;
-  border-radius: 8px;
-  max-width: 520px;
-  width: 100%;
-  text-align: center;
-  background: #fafafa;
-}
-
-.login-instruction {
+  margin: 0;
   font-size: 18px;
   color: #666;
-  margin: 12px 0 24px;
+  margin-top: 6px;
 }
 
-.login-actions .btn-back {
+.login-actions {
+  margin-top: 10px;
+}
+
+.btn-back {
   background: #fff;
   border: 2px solid #d0d0d0;
   padding: 12px 20px;
   border-radius: 6px;
   cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .login-logo { width: 320px; }
+  .login-title { font-size: 28px; }
+}
+
+@media (max-width: 480px) {
+  .login-logo { width: 260px; }
+  .login-title { font-size: 22px; }
 }
