@@ -1,0 +1,65 @@
+/* Kiosk / fullscreen layout */
+:root{
+  --bg: #fafafa;
+  --panel-bg: #ffffff;
+  --accent: #b8472f;
+}
+
+.app-container.kiosk{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  padding: 28px;
+  box-sizing: border-box;
+}
+
+.kiosk-header{ width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.brand-left{ display:flex; align-items:center; }
+.brand-right{ display:flex; align-items:center; }
+.header-center{ flex:1; display:flex; align-items:center; justify-content:center; }
+.main-title{ font-size:28px; font-weight:800; color:#8FA638; display:flex; align-items:center; gap:12px; }
+.brand-logo{ width:360px; height:140px; object-fit:contain; border-radius:6px; }
+.sub-title{ font-size:20px; color:var(--accent); font-weight:700; }
+.header-icon{ width:28px; height:28px; display:block; }
+
+@font-face{
+  font-family: 'Luna';
+  src: url('/fonts/Luna.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+.luna{ font-family: 'Luna', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; }
+
+/* grid with big buttons */
+.kiosk-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap:24px; width:100%; margin-top:150px; }
+.card{ border:none; cursor:pointer; padding:34px; border-radius:12px; min-height:170px; display:flex; flex-direction:column; align-items:center; justify-content:center; box-shadow:0 12px 26px rgba(0,0,0,0.08); color:#fff; transition: transform .12s ease, box-shadow .12s ease; text-align:center; font-size:20px; }
+.card:active{ transform: translateY(1px); }
+.card:focus{ box-shadow:0 16px 36px rgba(0,0,0,0.14); outline:none; }
+.card-icon svg{ width:72px; height:72px; }
+.card-label{ margin-top:18px; font-size:20px; font-weight:700; }
+
+/* ensure inline svg img assets scale nicely inside .card-icon */
+.card-icon img{ width:72px; height:72px; object-fit:contain; display:block; }
+
+/* color variations */
+.card-yellow{ background: #f0bd17; }
+.card-green{ background:#6fa22b; }
+.card-gray{ background:#707070; }
+.card-orange{ background:#f07f3e; }
+.card-red{ background:#b63322; }
+.card-gray2{ background:#9c9c9c; }
+
+.card:hover{ transform: translateY(-8px); box-shadow:0 26px 48px rgba(0,0,0,0.14); }
+
+.footer-note{ font-size:12px; color:#888; margin-top:22px; text-align:center; }
+
+.brand-logo.no-box{ background: transparent; box-shadow: none; }
+
+/* responsive */
+@media (max-width: 1100px){ .kiosk-grid{ grid-template-columns: repeat(2,1fr); } .kiosk-panel{ padding:28px; } }
+@media (max-width: 620px){ .kiosk-grid{ grid-template-columns: 1fr; } .brand-logo{ width:120px; height:120px; } .card{ min-height:140px; padding:22px; } .card-icon svg{ width:56px; height:56px; } .card-label{ font-size:18px; } }
+
