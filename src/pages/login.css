@@ -61,6 +61,26 @@
 
 .login-actions {
   margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.btn-nfc-mock {
+  background: #8FA638;
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.btn-nfc-mock:hover {
+  background: #7a8f30;
 }
 
 .btn-back {
