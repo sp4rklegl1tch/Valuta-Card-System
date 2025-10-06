@@ -1,9 +1,3 @@
-// Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-#[tauri::command]
-fn greet(name: &str) -> String {
-    format!("Hello, {}! You've been greeted from Rust!", name)
-}
-
 // NFC verification command
 #[tauri::command]
 fn verify_nfc_tag(uid: String) -> Result<bool, String> {
@@ -35,7 +29,7 @@ fn start_nfc_watcher() -> Result<String, String> {
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
-        .invoke_handler(tauri::generate_handler![greet, verify_nfc_tag, start_nfc_watcher])
+        .invoke_handler(tauri::generate_handler![verify_nfc_tag, start_nfc_watcher])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
